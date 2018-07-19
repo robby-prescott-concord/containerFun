@@ -23,13 +23,13 @@ public class Application {
         return "The number squared is: " + (number * number) + System.getProperty("line.separator");
     }
 
-    @RequestMapping(value = "/{word}", method = GET)
+    @RequestMapping(value = "/word/{word}", method = GET)
     public String getWord(@PathVariable String word) {
         return "Stop being so " + word.toLowerCase() + ". \n";
     }
 
     @RequestMapping(value = "/{a}/{b}", method = GET)
-    public String get(@PathVariable Long a, Long b) {
+    public String get(@PathVariable Long a, @PathVariable Long b) {
         return "The hypotenuse is: " + Math.sqrt((a * a) + (b * b)) + System.getProperty("line.separator");
     }
 
