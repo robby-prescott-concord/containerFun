@@ -2,9 +2,12 @@ package hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @SpringBootApplication
 @RestController
@@ -12,13 +15,12 @@ public class Application {
 
     @RequestMapping("/")
     public String home() {
-        return "Hello Docker World";
+        return "Hello Docker Carrots";
     }
 
-    @RequestMapping(value = "/id")
-    String getIdByValue(@RequestParam("id") int personId){
-        System.out.println("ID squared is "+ (personId * personId));
-        return "Get ID from query string of URL with value element";
+    @RequestMapping(value = "/{number}", method = GET)
+    public String get(@PathVariable Long number) {
+        return "The number squared is: " + (number * number);
     }
 
     public static void main(String[] args) {
