@@ -20,8 +20,19 @@ public class Application {
 
     @RequestMapping(value = "/{number}", method = GET)
     public String get(@PathVariable Long number) {
-        return "The number squared is: " + (number * number);
+        return "The number squared is: " + (number * number) + System.getProperty("line.separator");
     }
+
+    @RequestMapping(value = "/{word}", method = GET)
+    public String getWord(@PathVariable String word) {
+        return "Stop being so " + word.toLowerCase() + ". \n";
+    }
+
+    @RequestMapping(value = "/{a}/{b}", method = GET)
+    public String get(@PathVariable Long a, Long b) {
+        return "The hypotenuse is: " + Math.sqrt((a * a) + (b * b)) + System.getProperty("line.separator");
+    }
+
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
